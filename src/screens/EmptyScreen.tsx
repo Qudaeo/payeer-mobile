@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import commonStyles from '../base/styles';
+import commonStyles from '../base/commonStyles';
 
 const EmptyScreen = (name: string) => () =>
   (
