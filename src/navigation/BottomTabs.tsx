@@ -5,12 +5,13 @@ import FilterIcon from '../assets/svg/bottomTabs/filter.svg';
 import ExchangeIcon from '../assets/svg/bottomTabs/exchange.svg';
 import AccountIcon from '../assets/svg/bottomTabs/account.svg';
 import EmptyScreen from '../screens/EmptyScreen';
+import {Route} from './routes';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => (
   <Tab.Navigator
-    initialRouteName={'Account'}
+    initialRouteName={Route.Account}
     screenOptions={{
       headerShown: false,
       headerShadowVisible: false,
@@ -25,29 +26,29 @@ const BottomTabs = () => (
       tabBarLabel: () => null,
     }}>
     <Tab.Screen
-      name="Wallet"
-      component={EmptyScreen('Wallet')}
+      name={Route.Wallet}
+      component={EmptyScreen(Route.Wallet)}
       options={{
         tabBarIcon: ({color}) => <WalletIcon fill={color} />,
       }}
     />
     <Tab.Screen
-      name="Filter"
-      component={EmptyScreen('Filter')}
+      name={Route.Filter}
+      component={EmptyScreen(Route.Filter)}
       options={{
         tabBarIcon: ({color}) => <FilterIcon fill={color} />,
       }}
     />
     <Tab.Screen
-      name="Exchange"
-      component={EmptyScreen('Exchange')}
+      name={Route.Exchange}
+      component={EmptyScreen(Route.Exchange)}
       options={{
         tabBarIcon: ({color}) => <ExchangeIcon fill={color} />,
       }}
     />
     <Tab.Screen
-      name="Account"
-      component={EmptyScreen('Account')}
+      name={Route.Account}
+      component={EmptyScreen(Route.Account)}
       options={{
         tabBarIcon: ({color}) => <AccountIcon fill={color} />,
       }}
