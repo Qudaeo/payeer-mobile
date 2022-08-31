@@ -27,6 +27,10 @@ const BottomTabs = () => {
           backgroundColor: '#FFFFFF80',
           borderTopWidth: 0,
           elevation: 0,
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
         },
         tabBarLabel: () => null,
       }}>
