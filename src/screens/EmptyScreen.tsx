@@ -4,7 +4,7 @@ import commonStyles from '../base/commonStyles';
 
 const EmptyScreen = (name: string) => () =>
   (
-    <View style={commonStyles.container}>
+    <View style={[commonStyles.flex1, commonStyles.container]}>
       <Text>{name}</Text>
     </View>
   );
