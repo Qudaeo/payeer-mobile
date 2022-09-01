@@ -7,6 +7,8 @@ import AccountIcon from '../assets/svg/bottomTabs/account.svg';
 import EmptyScreen from '../screens/EmptyScreen';
 import {Route} from './routes';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import AccountScreen from '../screens/AccountScreen';
+import {bottomTabs} from '../base/consts';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,21 +18,21 @@ const BottomTabs = () => {
   return (
     <Tab.Navigator
       initialRouteName={Route.Account}
-      safeAreaInsets={{bottom: insets.bottom}}
       screenOptions={{
         headerShown: false,
         headerShadowVisible: false,
         headerTransparent: true,
-        tabBarActiveTintColor: '#03A9F4',
-        tabBarInactiveTintColor: '#000000',
+        tabBarActiveTintColor: bottomTabs.tabBarActiveTintColor,
+        tabBarInactiveTintColor: bottomTabs.tabBarInactiveTintColor,
         tabBarStyle: {
-          backgroundColor: '#FFFFFF80',
+          backgroundColor: bottomTabs.backgroundColor,
           borderTopWidth: 0,
           elevation: 0,
           position: 'absolute',
           left: 0,
           right: 0,
           bottom: 0,
+          height: bottomTabs.height + insets.bottom,
         },
         tabBarLabel: () => null,
       }}>
@@ -57,7 +59,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name={Route.Account}
-        component={EmptyScreen(Route.Account)}
+        component={AccountScreen}
         options={{
           tabBarIcon: ({color}) => <AccountIcon fill={color} />,
         }}
