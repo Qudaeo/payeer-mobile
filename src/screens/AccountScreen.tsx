@@ -19,7 +19,7 @@ const AccountScreen = () => {
   const insets = useSafeAreaInsets();
   const windowDimensions = Dimensions.get('window');
 
-  const screenDimensions = {
+  const contentDimensions = {
     width: windowDimensions.width,
     height: windowDimensions.height - bottomTabs.height - insets.bottom,
   };
@@ -27,14 +27,10 @@ const AccountScreen = () => {
   return (
     <>
       <ImageBackground
-        width={screenDimensions.width}
-        height={screenDimensions.height}
+        width={contentDimensions.width}
+        height={contentDimensions.height}
       />
-      <View
-        style={[
-          styles.container,
-          {width: screenDimensions.width, height: screenDimensions.height},
-        ]}>
+      <View style={[styles.container, contentDimensions]}>
         <ScrollView contentContainerStyle={commonStyles.container}>
           <LogoIcon style={styles.logo} />
           <Text style={styles.logoText}>{'CRYPTO WALLET'}</Text>
@@ -43,10 +39,7 @@ const AccountScreen = () => {
           <Text style={styles.totalUserRegisteredText}>
             {'TOTAL USERS REGISTERED'}
           </Text>
-          <Digits
-            totalUsersRegistered={totalUsersRegistered}
-            style={styles.digits}
-          />
+          <Digits number={totalUsersRegistered} style={styles.digits} />
         </ScrollView>
       </View>
     </>
