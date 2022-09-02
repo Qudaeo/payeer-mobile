@@ -5,6 +5,9 @@ export const bottomTabs = {
   tabBarInactiveTintColor: '#000000',
 };
 
+export const borderWidth = 16;
+
 export const defaultFont = {
   regular: 'ProximaNova-Regular',
+  bold: 'ProximaNova-Bold',
 };

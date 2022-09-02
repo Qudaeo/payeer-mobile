@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {bottomTabs, defaultFont} from '../base/consts';
+import {borderWidth, bottomTabs, defaultFont} from '../base/consts';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import ImageBackground from '../assets/svg/accountScreen/imageBackground';
+import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
 import LogoIcon from '../assets/svg/accountScreen/logo.svg';
 import LoginImage from '../assets/svg/accountScreen/loginImage.svg';
 import {colors} from '../base/colors';
 import commonStyles from '../base/commonStyles';
 import Digits from '../components/Digits';
 import {mockTotalUsersRegistered} from '../mock/mockTotalUsersRegistered';
+import GradientButton from '../components/GradientButton';
 
 const AccountScreen = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -31,7 +32,11 @@ const AccountScreen = () => {
         height={contentDimensions.height}
       />
       <View style={[styles.container, contentDimensions]}>
-        <ScrollView contentContainerStyle={commonStyles.container}>
+        <ScrollView
+          contentContainerStyle={[
+            commonStyles.container,
+            {width: contentDimensions.width},
+          ]}>
           <LogoIcon style={styles.logo} />
           <Text style={styles.logoText}>{'CRYPTO WALLET'}</Text>
           <LoginImage style={styles.mainImage} />
@@ -40,6 +45,15 @@ const AccountScreen = () => {
             {'TOTAL USERS REGISTERED'}
           </Text>
           <Digits number={totalUsersRegistered} style={styles.digits} />
+          <GradientButton
+            title={'CREATE ACCOUNT'}
+            description={'IN LESS THEN 30 seconds'}
+            onPress={() => {
+              console.log('CREATE ACCOUNT');
+            }}
+            style={styles.createAccountButton}
+            width={contentDimensions.width - 2 * borderWidth}
+          />
         </ScrollView>
       </View>
     </>
@@ -88,5 +102,8 @@ const styles = StyleSheet.create({
   },
   digits: {
     marginTop: 14,
+  },
+  createAccountButton: {
+    marginTop: 28,
   },
 });

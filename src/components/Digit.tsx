@@ -6,19 +6,17 @@ import {colors} from '../base/colors';
 
 interface IDigit {
   digit: string;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
-const Digit = ({digit, style}: IDigit) => {
-  return (
-    <View style={style}>
-      <DigitHolderIcon />
-      <View style={styles.textContainer}>
-        <Text style={styles.digitText}>{digit}</Text>
-      </View>
+const Digit = ({digit, style}: IDigit) => (
+  <View style={style}>
+    <DigitHolderIcon />
+    <View style={styles.textContainer}>
+      <Text style={styles.digitText}>{digit}</Text>
     </View>
-  );
-};
+  </View>
+);
 
 export default Digit;
 

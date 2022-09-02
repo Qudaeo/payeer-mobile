@@ -3,12 +3,12 @@ import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 import Digit from './Digit';
 
 interface IDigits {
-  number: number;
-  style: StyleProp<ViewStyle>;
+  number?: number;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Digits = ({number, style}: IDigits) => {
-  const digits = number.toString(10).split('');
+  const digits = number?.toString(10).split('') || [];
 
   const marginLeft = (index: number) =>
     (digits.length - index) % 3 === 0 ? 10 : 2;
