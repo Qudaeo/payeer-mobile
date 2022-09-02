@@ -10,6 +10,7 @@ import commonStyles from '../base/commonStyles';
 import Digits from '../components/Digits';
 import {mockTotalUsersRegistered} from '../mock/mockTotalUsersRegistered';
 import GradientButton from '../components/GradientButton';
+import TransparentButton from '../components/TransparentButton';
 
 const AccountScreen = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -58,6 +59,15 @@ const AccountScreen = () => {
             style={styles.createAccountButton}
             width={contentDimensions.width - 2 * borderWidth}
           />
+          <Text style={styles.orText}>{'OR'}</Text>
+          <TransparentButton
+            title={'LOGIN'}
+            description={'I HAVE AN ACCOUNT'}
+            onPress={() => {
+              console.log('LOGIN');
+            }}
+            width={contentDimensions.width - 2 * borderWidth}
+          />
         </ScrollView>
       </View>
     </>
@@ -84,7 +94,7 @@ const styles = StyleSheet.create({
     fontFamily: defaultFont.regular,
     marginTop: 6,
     fontSize: 11,
-    color: colors.white,
+    color: colors.white_FFFFFF,
     opacity: 0.6,
     letterSpacing: 0.857143,
     lineHeight: 16,
@@ -96,14 +106,14 @@ const styles = StyleSheet.create({
     fontFamily: defaultFont.regular,
     marginTop: 27.75,
     fontSize: 21,
-    color: colors.grey,
+    color: colors.grey_F1F1F1,
     lineHeight: 26,
   },
   totalUserRegisteredText: {
     fontFamily: defaultFont.regular,
     marginTop: 5,
     fontSize: 10,
-    color: colors.blue,
+    color: colors.blue_A2EEFF,
     lineHeight: 12,
     textTransform: 'uppercase',
   },
@@ -112,5 +122,13 @@ const styles = StyleSheet.create({
   },
   createAccountButton: {
     marginTop: 28,
+  },
+  orText: {
+    fontFamily: defaultFont.regular,
+    marginTop: 10,
+    marginBottom: 9,
+    fontSize: 10,
+    color: colors.blue_A1EEFF,
+    lineHeight: 12.18,
   },
 });

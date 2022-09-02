@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     top: '15%',
     fontFamily: defaultFont.regular,
     fontSize: 21,
-    color: colors.grey,
+    color: colors.grey_F1F1F1,
   },
 });
