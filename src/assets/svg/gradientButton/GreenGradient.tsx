@@ -18,7 +18,7 @@ const GreenGradient = ({width, height}: IGreenGradient) => (
         y="0"
         width={width}
         height={height}
-        rx="8"
+        rx="0"
         fill="url(#paint0_linear_0_1661)"
       />
     </G>

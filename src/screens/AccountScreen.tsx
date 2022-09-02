@@ -33,8 +33,12 @@ const AccountScreen = () => {
       />
       <View style={[styles.container, contentDimensions]}>
         <ScrollView
+          showsVerticalScrollIndicator={false}
+          overScrollMode={'never'}
+          bounces={false}
           contentContainerStyle={[
             commonStyles.container,
+            styles.scrollView,
             {width: contentDimensions.width},
           ]}>
           <LogoIcon style={styles.logo} />
@@ -69,8 +73,11 @@ const styles = StyleSheet.create({
     left: 0,
     alignItems: 'center',
   },
+  scrollView: {
+    paddingTop: 64,
+    paddingBottom: 16,
+  },
   logo: {
-    marginTop: 64,
     marginLeft: 5,
   },
   logoText: {

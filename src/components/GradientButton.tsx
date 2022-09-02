@@ -12,6 +12,7 @@ import {colors} from '../base/colors';
 import {defaultFont} from '../base/consts';
 import ChevronRight from '../assets/svg/gradientButton/chevronRight.svg';
 import GreenGradient from '../assets/svg/gradientButton/GreenGradient';
+import {Shadow} from 'react-native-shadow-2';
 
 interface IGradientButton {
   title: string;
@@ -31,23 +32,19 @@ const GradientButton = ({
   const height = 56;
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={onPress}
-      style={[
-        commonStyles.container,
-        styles.container,
-        {width, height},
-        style,
-      ]}>
-      <View style={[StyleSheet.absoluteFillObject]}>
-        <GreenGradient width={width} height={height} />
-      </View>
-      <Text style={styles.titleText}>{title}</Text>
-      <Text style={styles.descriptionText}>{description}</Text>
-      <View style={styles.chevronRight}>
-        <ChevronRight />
-      </View>
+    <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={style}>
+      <Shadow startColor={'rgba(14, 61, 9, 0.0953068)'} offset={[0, 4.09]}>
+        <View style={[styles.container, {width, height}]}>
+          <GreenGradient width={width} height={height} />
+          <View style={[StyleSheet.absoluteFillObject, commonStyles.container]}>
+            <Text style={styles.titleText}>{title}</Text>
+            <Text style={styles.descriptionText}>{description}</Text>
+          </View>
+          <View style={styles.chevronRight}>
+            <ChevronRight />
+          </View>
+        </View>
+      </Shadow>
     </TouchableOpacity>
   );
 };
@@ -57,6 +54,7 @@ export default GradientButton;
 const styles = StyleSheet.create({
   container: {
     borderRadius: 8,
+    overflow: 'hidden',
   },
   titleText: {
     fontFamily: defaultFont.bold,
