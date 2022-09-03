@@ -12,15 +12,13 @@ const PayeerTouchableOpacity = ({
   children,
   onPress,
   style,
-}: IPayeerTouchableOpacity) => {
-  return (
-    <TouchableOpacity
-      activeOpacity={buttonsActiveOpacity}
-      onPress={onPress}
-      style={style}>
-      {children}
-    </TouchableOpacity>
-  );
-};
+}: IPayeerTouchableOpacity) => (
+  <TouchableOpacity
+    activeOpacity={buttonsActiveOpacity}
+    onPress={onPress}
+    style={style}>
+    {children}
+  </TouchableOpacity>
+);
 
 export default PayeerTouchableOpacity;

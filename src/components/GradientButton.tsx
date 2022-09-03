@@ -21,21 +21,19 @@ const GradientButton = ({
   onPress,
   width,
   style,
-}: IGradientButton) => {
-  return (
-    <PayeerTouchableOpacity onPress={onPress} style={style}>
-      <Shadow startColor={'rgba(14, 61, 9, 0.0953068)'} offset={[0, 4.09]}>
-        <ButtonContent
-          children={<GreenGradient width={width} height={buttonHeight} />}
-          width={width}
-          title={title}
-          description={description}
-          descriptionTextStyle={styles.descriptionText}
-        />
-      </Shadow>
-    </PayeerTouchableOpacity>
-  );
-};
+}: IGradientButton) => (
+  <PayeerTouchableOpacity onPress={onPress} style={style}>
+    <Shadow startColor={'rgba(14, 61, 9, 0.0953068)'} offset={[0, 4.09]}>
+      <ButtonContent
+        children={<GreenGradient width={width} height={buttonHeight} />}
+        width={width}
+        title={title}
+        description={description}
+        descriptionTextStyle={styles.descriptionText}
+      />
+    </Shadow>
+  </PayeerTouchableOpacity>
+);
 
 export default GradientButton;
 

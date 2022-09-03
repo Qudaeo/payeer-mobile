@@ -18,19 +18,17 @@ const TransparentButton = ({
   onPress,
   width,
   style,
-}: ITransparentButton) => {
-  return (
-    <PayeerTouchableOpacity onPress={onPress} style={style}>
-      <ButtonContent
-        width={width}
-        title={title}
-        description={description}
-        descriptionTextStyle={styles.descriptionText}
-        containerStyle={styles.container}
-      />
-    </PayeerTouchableOpacity>
-  );
-};
+}: ITransparentButton) => (
+  <PayeerTouchableOpacity onPress={onPress} style={style}>
+    <ButtonContent
+      width={width}
+      title={title}
+      description={description}
+      descriptionTextStyle={styles.descriptionText}
+      containerStyle={styles.container}
+    />
+  </PayeerTouchableOpacity>
+);
 
 export default TransparentButton;
 
