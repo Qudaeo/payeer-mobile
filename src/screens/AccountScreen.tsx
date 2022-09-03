@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {borderWidth, bottomTabs, defaultFont} from '../base/consts';
+import {marginHorizontalWidth, bottomTabs, defaultFont} from '../base/consts';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
 import LogoIcon from '../assets/svg/accountScreen/logo.svg';
@@ -23,6 +23,14 @@ const AccountScreen = () => {
   const contentDimensions = {
     width: windowDimensions.width,
     height: windowDimensions.height - bottomTabs.height - insets.bottom,
+  };
+
+  const onCreateAccountPress = () => {
+    setTotalUsersRegistered(total => total + 10);
+  };
+
+  const onLoginPress = () => {
+    console.log('LOGIN');
   };
 
   return (
@@ -52,20 +60,16 @@ const AccountScreen = () => {
           <GradientButton
             title={'CREATE ACCOUNT'}
             description={'IN LESS THEN 30 seconds'}
-            onPress={() => {
-              setTotalUsersRegistered(total => total + 10);
-            }}
+            onPress={onCreateAccountPress}
             style={styles.createAccountButton}
-            width={contentDimensions.width - 2 * borderWidth}
+            width={contentDimensions.width - 2 * marginHorizontalWidth}
           />
           <Text style={styles.orText}>{'OR'}</Text>
           <TransparentButton
             title={'LOGIN'}
             description={'I HAVE AN ACCOUNT'}
-            onPress={() => {
-              console.log('LOGIN');
-            }}
-            width={contentDimensions.width - 2 * borderWidth}
+            onPress={onLoginPress}
+            width={contentDimensions.width - 2 * marginHorizontalWidth}
           />
         </ScrollView>
       </View>
