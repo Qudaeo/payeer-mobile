@@ -9,6 +9,7 @@ import {Route} from './routes';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import AccountScreen from '../screens/AccountScreen';
 import {bottomTabs} from '../base/consts';
+import WalletScreen from '../screens/WalletScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,7 +39,7 @@ const BottomTabs = () => {
       }}>
       <Tab.Screen
         name={Route.Wallet}
-        component={EmptyScreen(Route.Wallet)}
+        component={WalletScreen}
         options={{
           tabBarIcon: ({color}) => <WalletIcon fill={color} />,
         }}

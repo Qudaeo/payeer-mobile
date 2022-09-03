@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
-import {Dimensions, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {marginHorizontalWidth, bottomTabs, defaultFont} from '../base/consts';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {Platform, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {marginHorizontalWidth, defaultFont, bottomTabs} from '../base/consts';
+import {
+  useSafeAreaFrame,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
 import LogoIcon from '../assets/svg/accountScreen/logo.svg';
 import LoginImage from '../assets/svg/accountScreen/loginImage.svg';
@@ -18,11 +21,14 @@ const AccountScreen = () => {
   );
 
   const insets = useSafeAreaInsets();
-  const windowDimensions = Dimensions.get('window');
+  const frame = useSafeAreaFrame();
 
   const contentDimensions = {
-    width: windowDimensions.width,
-    height: windowDimensions.height - bottomTabs.height - insets.bottom,
+    width: frame.width,
+    height:
+      frame.height -
+      bottomTabs.height -
+      (Platform.OS === 'ios' ? insets.bottom : 0),
   };
 
   const onCreateAccountPress = () => {
