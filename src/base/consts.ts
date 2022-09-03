@@ -11,5 +11,6 @@ export const buttonsActiveOpacity = 0.7;
 
 export const defaultFont = {
   regular: 'ProximaNova-Regular',
+  semiBold: 'ProximaNova-Semibold',
   bold: 'ProximaNova-Bold',
 };

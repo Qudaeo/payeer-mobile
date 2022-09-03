@@ -1,13 +1,14 @@
 import React from 'react';
-import {Platform, ScrollView, StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import {bottomTabs} from '../base/consts';
 import {
   useSafeAreaFrame,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
-import commonStyles from '../base/commonStyles';
 import Header from '../components/Header';
+import {colors} from '../base/colors';
+import WalletSheet from '../components/WalletSheet';
 
 const WalletScreen = () => {
   const insets = useSafeAreaInsets();
@@ -25,16 +26,7 @@ const WalletScreen = () => {
       />
       <View style={[styles.container, frame]}>
         <Header />
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          overScrollMode={'never'}
-          bounces={false}
-          contentContainerStyle={[
-            commonStyles.container,
-            styles.scrollView,
-            {width: frame.width},
-          ]}
-        />
+        <WalletSheet />
       </View>
     </>
   );
@@ -52,5 +44,10 @@ const styles = StyleSheet.create({
   scrollView: {
     paddingTop: 64,
     paddingBottom: 16,
+  },
+  contentContainer: {
+    backgroundColor: colors.grey_F4F4F4,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 });

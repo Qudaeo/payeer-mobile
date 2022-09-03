@@ -28,20 +28,19 @@ const HeaderButtons = () => {
   return (
     <View style={styles.container}>
       {buttons.map(button => (
-        <PayeerTouchableOpacity
-          key={button.type}
-          onPress={() => {
-            console.log(button.type);
-          }}>
-          <>
+        <View key={button.type}>
+          <PayeerTouchableOpacity
+            onPress={() => {
+              console.log(button.type);
+            }}>
             <button.Icon />
-            {button.badge && (
-              <View style={[commonStyles.container, styles.badge]}>
-                <Text style={styles.badgeText}>{button.badge}</Text>
-              </View>
-            )}
-          </>
-        </PayeerTouchableOpacity>
+          </PayeerTouchableOpacity>
+          {button.badge && (
+            <View style={[commonStyles.container, styles.badge]}>
+              <Text style={styles.badgeText}>{button.badge}</Text>
+            </View>
+          )}
+        </View>
       ))}
     </View>
   );
