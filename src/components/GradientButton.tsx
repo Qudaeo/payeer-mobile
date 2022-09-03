@@ -23,7 +23,12 @@ const GradientButton = ({
   style,
 }: IGradientButton) => (
   <PayeerTouchableOpacity onPress={onPress} style={style}>
-    <Shadow startColor={'rgba(14, 61, 9, 0.0953068)'} offset={[0, 4.09]}>
+    <>
+      <Shadow
+        style={[styles.shadow, {width: width - 1, height: buttonHeight - 2}]}
+        startColor={'rgba(14, 61, 9, 0.0953068)'}
+        offset={[0, 4.09]}
+      />
       <ButtonContent
         children={<GreenGradient width={width} height={buttonHeight} />}
         width={width}
@@ -31,13 +36,19 @@ const GradientButton = ({
         description={description}
         descriptionTextStyle={styles.descriptionText}
       />
-    </Shadow>
+    </>
   </PayeerTouchableOpacity>
 );
 
 export default GradientButton;
 
 const styles = StyleSheet.create({
+  shadow: {
+    position: 'absolute',
+    top: 0,
+    left: 1,
+    borderRadius: 8,
+  },
   descriptionText: {
     color: colors.green_98FF83,
   },
