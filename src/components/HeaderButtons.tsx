@@ -6,6 +6,7 @@ import SettingsIcon from '../assets/svg/header/settings.svg';
 import commonStyles from '../base/commonStyles';
 import {colors} from '../base/colors';
 import {defaultFont} from '../base/consts';
+import PayeerTouchableOpacity from './PayeerTouchableOpacity';
 
 const HeaderButtons = () => {
   const buttons = [
@@ -27,14 +28,20 @@ const HeaderButtons = () => {
   return (
     <View style={styles.container}>
       {buttons.map(button => (
-        <View key={button.type}>
-          <button.Icon />
-          {button.badge && (
-            <View style={[commonStyles.container, styles.badge]}>
-              <Text style={styles.badgeText}>{button.badge}</Text>
-            </View>
-          )}
-        </View>
+        <PayeerTouchableOpacity
+          key={button.type}
+          onPress={() => {
+            console.log(button.type);
+          }}>
+          <>
+            <button.Icon />
+            {button.badge && (
+              <View style={[commonStyles.container, styles.badge]}>
+                <Text style={styles.badgeText}>{button.badge}</Text>
+              </View>
+            )}
+          </>
+        </PayeerTouchableOpacity>
       ))}
     </View>
   );

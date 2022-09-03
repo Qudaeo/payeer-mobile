@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleProp, StyleSheet, ViewStyle} from 'react-native';
-import {colors} from '../base/colors';
 import {buttonHeight} from '../base/consts';
 import GreenGradient from '../assets/svg/gradientButton/GreenGradient';
 import {Shadow} from 'react-native-shadow-2';
@@ -13,34 +12,44 @@ interface IGradientButton {
   onPress: () => void;
   width: number;
   style?: StyleProp<ViewStyle>;
+  shadow?: boolean;
+  type: 'green' | 'transparent';
 }
 
-const GradientButton = ({
+const PayeerButton = ({
   title,
   description,
   onPress,
   width,
   style,
+  shadow,
+  type,
 }: IGradientButton) => (
   <PayeerTouchableOpacity onPress={onPress} style={style}>
     <>
-      <Shadow
-        style={[styles.shadow, {width: width - 1, height: buttonHeight - 2}]}
-        startColor={'rgba(14, 61, 9, 0.0953068)'}
-        offset={[0, 4.09]}
-      />
+      {shadow && (
+        <Shadow
+          style={[styles.shadow, {width: width - 1, height: buttonHeight - 2}]}
+          startColor={'rgba(14, 61, 9, 0.0953068)'}
+          offset={[0, 4.09]}
+        />
+      )}
       <ButtonContent
-        children={<GreenGradient width={width} height={buttonHeight} />}
         width={width}
         title={title}
         description={description}
-        descriptionTextStyle={styles.descriptionText}
-      />
+        type={type}>
+        <>
+          {type === 'green' && (
+            <GreenGradient width={width} height={buttonHeight} />
+          )}
+        </>
+      </ButtonContent>
     </>
   </PayeerTouchableOpacity>
 );
 
-export default GradientButton;
+export default PayeerButton;
 
 const styles = StyleSheet.create({
   shadow: {
@@ -48,8 +57,5 @@ const styles = StyleSheet.create({
     top: 0,
     left: 1,
     borderRadius: 8,
-  },
-  descriptionText: {
-    color: colors.green_98FF83,
   },
 });

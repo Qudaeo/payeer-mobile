@@ -12,8 +12,7 @@ import {colors} from '../base/colors';
 import commonStyles from '../base/commonStyles';
 import AnimatedDigits from '../components/AnimatedDigits';
 import {mockTotalUsersRegistered} from '../mock/mockTotalUsersRegistered';
-import GradientButton from '../components/GradientButton';
-import TransparentButton from '../components/TransparentButton';
+import PayeerButton from '../components/PayeerButton';
 
 const AccountScreen = () => {
   const [totalUsersRegistered, setTotalUsersRegistered] = useState(
@@ -63,19 +62,22 @@ const AccountScreen = () => {
             {'TOTAL USERS REGISTERED'}
           </Text>
           <AnimatedDigits number={totalUsersRegistered} style={styles.digits} />
-          <GradientButton
+          <PayeerButton
             title={'CREATE ACCOUNT'}
             description={'IN LESS THEN 30 seconds'}
             onPress={onCreateAccountPress}
             style={styles.createAccountButton}
             width={contentDimensions.width - 2 * marginHorizontalWidth}
+            shadow={true}
+            type={'green'}
           />
           <Text style={styles.orText}>{'OR'}</Text>
-          <TransparentButton
+          <PayeerButton
             title={'LOGIN'}
             description={'I HAVE AN ACCOUNT'}
             onPress={onLoginPress}
             width={contentDimensions.width - 2 * marginHorizontalWidth}
+            type={'transparent'}
           />
         </ScrollView>
       </View>

@@ -1,12 +1,5 @@
 import React, {ReactElement} from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import commonStyles from '../base/commonStyles';
 import {colors} from '../base/colors';
 import {buttonHeight, defaultFont} from '../base/consts';
@@ -17,8 +10,7 @@ interface IButtonContent {
   width: number;
   title: string;
   description: string;
-  containerStyle?: StyleProp<ViewStyle>;
-  descriptionTextStyle: StyleProp<TextStyle>;
+  type: 'green' | 'transparent';
 }
 
 const ButtonContent = ({
@@ -26,15 +18,23 @@ const ButtonContent = ({
   width,
   title,
   description,
-  containerStyle,
-  descriptionTextStyle,
+  type,
 }: IButtonContent) => (
   <View
-    style={[styles.container, containerStyle, {width, height: buttonHeight}]}>
+    style={[
+      styles.container,
+      type === 'transparent' && styles.containerTransparent,
+      {width, height: buttonHeight},
+    ]}>
     {children}
     <View style={[StyleSheet.absoluteFillObject, commonStyles.container]}>
       <Text style={styles.titleText}>{title}</Text>
-      <Text style={[styles.descriptionText, descriptionTextStyle]}>
+      <Text
+        style={[
+          styles.descriptionText,
+          type === 'green' && styles.descriptionTextGreen,
+          type === 'transparent' && styles.descriptionTextTransparent,
+        ]}>
         {description}
       </Text>
     </View>
@@ -69,5 +69,15 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'center',
     marginRight: 16,
+  },
+  descriptionTextGreen: {
+    color: colors.green_98FF83,
+  },
+  descriptionTextTransparent: {
+    color: colors.blue_A1EEFF,
+  },
+  containerTransparent: {
+    borderWidth: 2.04,
+    borderColor: colors.white_FFFFFF,
   },
 });
