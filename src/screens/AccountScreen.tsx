@@ -7,13 +7,12 @@ import LogoIcon from '../assets/svg/accountScreen/logo.svg';
 import LoginImage from '../assets/svg/accountScreen/loginImage.svg';
 import {colors} from '../base/colors';
 import commonStyles from '../base/commonStyles';
-import Digits from '../components/Digits';
+import AnimatedDigits from '../components/AnimatedDigits';
 import {mockTotalUsersRegistered} from '../mock/mockTotalUsersRegistered';
 import GradientButton from '../components/GradientButton';
 import TransparentButton from '../components/TransparentButton';
 
 const AccountScreen = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [totalUsersRegistered, setTotalUsersRegistered] = useState(
     mockTotalUsersRegistered,
   );
@@ -49,12 +48,12 @@ const AccountScreen = () => {
           <Text style={styles.totalUserRegisteredText}>
             {'TOTAL USERS REGISTERED'}
           </Text>
-          <Digits number={totalUsersRegistered} style={styles.digits} />
+          <AnimatedDigits number={totalUsersRegistered} style={styles.digits} />
           <GradientButton
             title={'CREATE ACCOUNT'}
             description={'IN LESS THEN 30 seconds'}
             onPress={() => {
-              console.log('CREATE ACCOUNT');
+              setTotalUsersRegistered(total => total + 10);
             }}
             style={styles.createAccountButton}
             width={contentDimensions.width - 2 * borderWidth}
