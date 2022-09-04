@@ -5,6 +5,8 @@ export const bottomTabs = {
   tabBarInactiveTintColor: '#000000',
 };
 
+export const header = {height: 50};
+
 export const marginHorizontalWidth = 16;
 export const buttonHeight = 56;
 export const buttonsActiveOpacity = 0.7;

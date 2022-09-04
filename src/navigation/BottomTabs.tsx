@@ -18,7 +18,7 @@ const BottomTabs = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={Route.Account}
+      initialRouteName={Route.Wallet}
       screenOptions={{
         headerShown: false,
         headerShadowVisible: false,
