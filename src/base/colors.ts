@@ -9,6 +9,9 @@ export const colors = {
   blue_A2EEFF: '#A2EEFF',
   blue_A1EEFF: '#A1EEFF',
   blue_03A9F4: '#03A9F4',
+  green_4CAF50: '#4CAF50',
+  green_70BF73: '#70BF73',
   green_98FF83: '#98FF83',
   black_262B34: '#262B34',
+  red_EF4712: '#EF4712',
 };

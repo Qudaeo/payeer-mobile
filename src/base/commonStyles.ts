@@ -8,6 +8,9 @@ const commonStyles = StyleSheet.create({
   flex1: {
     flex: 1,
   },
+  row: {
+    flexDirection: 'row',
+  },
 });
 
 export default commonStyles;
