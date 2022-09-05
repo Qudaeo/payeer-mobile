@@ -11,6 +11,7 @@ import {mockWalletSummary} from '../mock/mockWalletSummary';
 import WalletItem from './WalletItem';
 import {bottomTabs, header} from '../base/consts';
 import {TWalletItem} from '../types/wallet';
+import AnimatedSlideUp from './AnimatedSlideUp';
 
 const WalletSheet = () => {
   const frame = useSafeAreaFrame();
@@ -25,24 +26,26 @@ const WalletSheet = () => {
   );
 
   return (
-    <View style={styles.container}>
-      <WalletSheetHeader />
-      <View style={{height: frame.height - headerHeight - bottomTabsHeight}}>
-        <FlatList
-          data={mockWalletSummary}
-          keyExtractor={item => item.currency}
-          renderItem={renderItem}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-          showsVerticalScrollIndicator={false}
-          overScrollMode={'never'}
-          bounces={false}
-          contentContainerStyle={[
-            commonStyles.container,
-            {width: frame.width, paddingBottom: bottomTabs.height + 10},
-          ]}
-        />
-      </View>
-    </View>
+    <AnimatedSlideUp style={styles.container}>
+      <>
+        <WalletSheetHeader />
+        <View style={{height: frame.height - headerHeight - bottomTabsHeight}}>
+          <FlatList
+            data={mockWalletSummary}
+            keyExtractor={item => item.currency}
+            renderItem={renderItem}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            showsVerticalScrollIndicator={false}
+            overScrollMode={'never'}
+            bounces={false}
+            contentContainerStyle={[
+              commonStyles.container,
+              {width: frame.width, paddingBottom: bottomTabs.height + 10},
+            ]}
+          />
+        </View>
+      </>
+    </AnimatedSlideUp>
   );
 };
 
