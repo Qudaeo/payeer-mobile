@@ -1,7 +1,6 @@
 import React, {ReactElement, useEffect, useMemo} from 'react';
-import {Animated, StyleProp, ViewStyle} from 'react-native';
+import {Animated, Dimensions, StyleProp, ViewStyle} from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
-import {useSafeAreaFrame} from 'react-native-safe-area-context';
 
 interface IAnimatedSlideUp {
   children: ReactElement;
@@ -9,14 +8,13 @@ interface IAnimatedSlideUp {
 }
 
 const AnimatedSlideUp = ({children, style}: IAnimatedSlideUp) => {
-  const frame = useSafeAreaFrame();
-  const windowHeight = frame.height;
+  const windowHeight = Dimensions.get('window').height;
 
   const animated = useMemo(
     () => new Animated.Value(windowHeight),
     [windowHeight],
   );
-  const duration = 300;
+  const duration = 500;
 
   const isFocused = useIsFocused();
 
