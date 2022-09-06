@@ -7,7 +7,7 @@ interface IImageBackground {
 }
 
 const ImageBackground = ({width, height}: IImageBackground) => (
-  <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
+  <Svg>
     <Rect width={width} height={height} fill="url(#paint0_radial_0_1274)" />
     <Defs>
       <RadialGradient
