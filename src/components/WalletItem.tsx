@@ -10,6 +10,7 @@ import Graph from '../assets/svg/accountScreen/Graph';
 import StarIcon from '../assets/svg/accountScreen/star.svg';
 import ArrowTop from '../assets/svg/accountScreen/arrowTop.svg';
 import PayeerTouchableOpacity from './PayeerTouchableOpacity';
+import {numberToCurrencyString} from '../base/helper';
 
 interface IWalletItem {
   walletItem: TWalletItem;
@@ -30,7 +31,9 @@ const WalletItem = ({walletItem}: IWalletItem) => {
         <CurrencyIcon name={walletItem.currency} style={styles.currencyIcon} />
         <View style={styles.walletSummary}>
           <View style={commonStyles.row}>
-            <Text style={styles.totalText}>{walletItem.total.toFixed(2)}</Text>
+            <Text style={styles.totalText}>
+              {numberToCurrencyString(walletItem.total)}
+            </Text>
             <Text style={styles.currencyText}>{walletItem.currency}</Text>
           </View>
           <View style={commonStyles.row}>
@@ -39,12 +42,12 @@ const WalletItem = ({walletItem}: IWalletItem) => {
               style={[
                 styles.profitText,
                 walletItem.profit < 0 && styles.profitRedText,
-              ]}>{`${walletItem.profit < 0 ? '' : '+'}${
-              walletItem.profit
-            }%`}</Text>
+              ]}>{`${walletItem.profit < 0 ? '' : '+'}${numberToCurrencyString(
+              walletItem.profit,
+            )}%`}</Text>
           </View>
-          <Text style={styles.usdTotalText}>{`${walletItem.usdTotal.toFixed(
-            2,
+          <Text style={styles.usdTotalText}>{`${numberToCurrencyString(
+            walletItem.usdTotal,
           )} USD`}</Text>
         </View>
       </View>
@@ -67,7 +70,7 @@ const WalletItem = ({walletItem}: IWalletItem) => {
                       : colors.green_4CAF50,
                 },
               ]}>
-              {walletItem.price.toFixed(2)}
+              {numberToCurrencyString(walletItem.price)}
             </Text>
           </View>
         </View>
