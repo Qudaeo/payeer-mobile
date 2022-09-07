@@ -8,8 +8,12 @@ import EmptyScreen from '../screens/EmptyScreen';
 import {Route} from './routes';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import AccountScreen from '../screens/AccountScreen';
-import {bottomTabs} from '../base/consts';
+import {bottomTabs, defaultFont} from '../base/consts';
 import WalletScreen from '../screens/WalletScreen';
+import ExchangeScreen from '../screens/ExchangeScreen';
+import {StyleSheet} from 'react-native';
+import {colors} from '../base/colors';
+import GoBackButton from './GoBackButton';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +22,7 @@ const BottomTabs = () => {
 
   return (
     <Tab.Navigator
-      initialRouteName={Route.Wallet}
+      initialRouteName={Route.Exchange}
       screenOptions={{
         headerShown: false,
         headerShadowVisible: false,
@@ -53,9 +57,14 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name={Route.Exchange}
-        component={EmptyScreen(Route.Exchange)}
+        component={ExchangeScreen}
         options={{
           tabBarIcon: ({color}) => <ExchangeIcon fill={color} />,
+          headerShown: true,
+          headerTitleAlign: 'center',
+          title: 'Обменять',
+          headerTitleStyle: styles.header,
+          headerLeft: () => <GoBackButton />,
         }}
       />
       <Tab.Screen
@@ -70,3 +79,11 @@ const BottomTabs = () => {
 };
 
 export default BottomTabs;
+
+const styles = StyleSheet.create({
+  header: {
+    fontFamily: defaultFont.bold,
+    fontSize: 21,
+    color: colors.black_262B34,
+  },
+});
