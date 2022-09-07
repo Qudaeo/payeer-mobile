@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import UsdIcon from '../assets/svg/currency/USD.svg';
 import {defaultFont} from '../base/consts';
 import {colors} from '../base/colors';
+import {numberToCurrencyString} from '../base/helper';
 
 interface IBalanceTotal {
   total: number;
@@ -16,10 +17,9 @@ const BalanceTotal = ({total}: IBalanceTotal) => (
         {'TOTAL '}
         <Text style={styles.titlePart2Text}>{'Balance'}</Text>
       </Text>
-      <Text style={styles.totalText}>{`${total.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      })}`}</Text>
+      <Text style={styles.totalText}>{`$${numberToCurrencyString(
+        total,
+      )}`}</Text>
     </View>
   </View>
 );
