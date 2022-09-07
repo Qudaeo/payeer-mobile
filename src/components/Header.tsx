@@ -3,19 +3,25 @@ import {Animated, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import LogoIcon from '../assets/svg/accountScreen/logo.svg';
 import HeaderButtons from './HeaderButtons';
+import {useIsFocused} from '@react-navigation/native';
 
 const Header = () => {
   const insets = useSafeAreaInsets();
-
-  const fadeAnim = useRef(new Animated.Value(0.6)).current;
+  const initialOpacity = 0.6;
+  const fadeAnim = useRef(new Animated.Value(initialOpacity)).current;
+  const isFocused = useIsFocused();
 
   useEffect(() => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  }, [fadeAnim]);
+    if (isFocused) {
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      fadeAnim.setValue(initialOpacity);
+    }
+  }, [fadeAnim, isFocused]);
 
   return (
     <Animated.View
