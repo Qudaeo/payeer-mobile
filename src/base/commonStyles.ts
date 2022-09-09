@@ -11,6 +11,12 @@ const commonStyles = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  marginTop17: {
+    marginTop: 17,
+  },
+  marginTop13: {
+    marginTop: 13,
+  },
 });
 
 export default commonStyles;

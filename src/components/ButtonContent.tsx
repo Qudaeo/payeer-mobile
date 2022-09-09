@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleProp, StyleSheet, Text, View, ViewStyle} from 'react-native';
 import commonStyles from '../base/commonStyles';
 import {colors} from '../base/colors';
 import {buttonHeight, defaultFont} from '../base/consts';
@@ -9,8 +9,9 @@ interface IButtonContent {
   children?: ReactElement;
   width: number;
   title: string;
-  description: string;
+  description?: string;
   type: 'green' | 'transparent';
+  style?: StyleProp<ViewStyle>;
 }
 
 const ButtonContent = ({
@@ -19,24 +20,28 @@ const ButtonContent = ({
   title,
   description,
   type,
+  style,
 }: IButtonContent) => (
   <View
     style={[
       styles.container,
       type === 'transparent' && styles.containerTransparent,
       {width, height: buttonHeight},
+      style,
     ]}>
     {children}
     <View style={[StyleSheet.absoluteFillObject, commonStyles.container]}>
       <Text style={styles.titleText}>{title}</Text>
-      <Text
-        style={[
-          styles.descriptionText,
-          type === 'green' && styles.descriptionTextGreen,
-          type === 'transparent' && styles.descriptionTextTransparent,
-        ]}>
-        {description}
-      </Text>
+      {description && (
+        <Text
+          style={[
+            styles.descriptionText,
+            type === 'green' && styles.descriptionTextGreen,
+            type === 'transparent' && styles.descriptionTextTransparent,
+          ]}>
+          {description}
+        </Text>
+      )}
     </View>
     <View style={styles.chevronRight}>
       <ChevronRight />

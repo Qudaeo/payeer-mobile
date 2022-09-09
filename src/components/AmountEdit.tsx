@@ -16,12 +16,19 @@ import ArrowDownIcon from '../assets/svg/exchangeScreen/arrowDown.svg';
 
 interface IAmountEdit {
   amount: TAmount;
-  setAmount: (amount: string) => void;
-  style: StyleProp<ViewStyle>;
+  setAmount?: (amount: string) => void;
+  style?: StyleProp<ViewStyle>;
   title: string;
+  editable?: boolean;
 }
 
-const AmountEdit = ({amount, setAmount, style, title}: IAmountEdit) => {
+const AmountEdit = ({
+  amount,
+  setAmount,
+  style,
+  title,
+  editable = false,
+}: IAmountEdit) => {
   const [edit, setEdit] = useState(false);
 
   return (
@@ -30,6 +37,7 @@ const AmountEdit = ({amount, setAmount, style, title}: IAmountEdit) => {
         style={[styles.amountContainer, edit && styles.amountContainerEdit]}>
         <Text style={[styles.title, edit && styles.black]}>{title}</Text>
         <TextInput
+          editable={editable}
           value={amount.amount}
           onChangeText={setAmount}
           onFocus={() => setEdit(true)}
@@ -94,7 +102,7 @@ const styles = StyleSheet.create({
     marginLeft: -2,
   },
   androidTextInput: {
-    marginTop: -12,
+    marginTop: -13,
     marginLeft: -6,
   },
   black: {
@@ -111,8 +119,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white_FFFFFF,
     overflow: 'hidden',
     justifyContent: 'center',
-    paddingLeft: 24,
-    paddingRight: 20,
+    alignItems: 'flex-end',
+    paddingRight: 17,
+    paddingLeft: 7,
   },
   currencySelectorEdit: {
     marginTop: 11,
@@ -124,9 +133,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   currency: {
+    flex: 1,
     fontFamily: defaultFont.bold,
     fontSize: 12,
     color: colors.black_262B34,
-    marginRight: 12,
+    textAlign: 'center',
   },
 });

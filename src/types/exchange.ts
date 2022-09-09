@@ -1,7 +1,7 @@
 import {TCurrency} from './wallet';
 
 type TWallet = {
-  BTC: {
+  [key in TCurrency]?: {
     amount: number;
     rate: number;
   };
