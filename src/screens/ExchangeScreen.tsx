@@ -48,7 +48,10 @@ const ExchangeScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={[
         styles.background,
-        {marginBottom: bottomTabs.height + insets.bottom},
+        {
+          marginBottom:
+            bottomTabs.height + (Platform.OS === 'ios' ? insets.bottom : 0),
+        },
       ]}>
       <ScrollView
         bounces={false}
