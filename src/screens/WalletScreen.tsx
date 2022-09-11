@@ -9,6 +9,7 @@ import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
 import Header from '../components/Header';
 import {colors} from '../base/colors';
 import WalletSheet from '../components/WalletSheet';
+import {BlurView} from '@react-native-community/blur';
 
 const WalletScreen = () => {
   const insets = useSafeAreaInsets();
@@ -28,6 +29,12 @@ const WalletScreen = () => {
         <Header />
         <WalletSheet />
       </View>
+      <BlurView
+        style={styles.blur}
+        blurType={'light'}
+        blurAmount={12}
+        reducedTransparencyFallbackColor={colors.white_FFFFFF}
+      />
     </>
   );
 };
@@ -49,5 +56,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey_F4F4F4,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  blur: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: bottomTabs.height,
   },
 });
