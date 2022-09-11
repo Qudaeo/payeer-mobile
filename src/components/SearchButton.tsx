@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {colors} from '../base/colors';
-import SearchIcon from '../assets/svg/search.svg';
+import SearchIcon from '../assets/svg/searchButton/search.svg';
 import commonStyles from '../base/commonStyles';
 
 const SearchButton = () => (

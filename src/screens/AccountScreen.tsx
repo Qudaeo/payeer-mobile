@@ -6,7 +6,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
-import LogoIcon from '../assets/svg/accountScreen/logo.svg';
+import Logo from '../components/Logo';
 import LoginImage from '../assets/svg/accountScreen/loginImage.svg';
 import {colors} from '../base/colors';
 import commonStyles from '../base/commonStyles';
@@ -54,8 +54,7 @@ const AccountScreen = () => {
             styles.scrollView,
             {width: contentDimensions.width},
           ]}>
-          <LogoIcon style={styles.logo} />
-          <Text style={styles.logoText}>{'CRYPTO WALLET'}</Text>
+          <Logo />
           <LoginImage style={styles.mainImage} />
           <Text style={styles.welcomeText}>{'Welcome to Payeer'}</Text>
           <Text style={styles.totalUserRegisteredText}>
@@ -97,18 +96,6 @@ const styles = StyleSheet.create({
   scrollView: {
     paddingTop: 64,
     paddingBottom: 16,
-  },
-  logo: {
-    marginLeft: 5,
-  },
-  logoText: {
-    fontFamily: defaultFont.regular,
-    marginTop: 6,
-    fontSize: 11,
-    color: colors.white_FFFFFF,
-    opacity: 0.6,
-    letterSpacing: 0.857143,
-    lineHeight: 16,
   },
   mainImage: {
     marginTop: 29,

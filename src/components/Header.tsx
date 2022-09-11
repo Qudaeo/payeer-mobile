@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {Animated, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import LogoIcon from '../assets/svg/accountScreen/logo.svg';
+import LogoIcon from '../assets/svg/logo/logo.svg';
 import HeaderButtons from './HeaderButtons';
 import {useIsFocused} from '@react-navigation/native';
 
