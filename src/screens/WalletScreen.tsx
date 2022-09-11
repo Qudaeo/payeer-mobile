@@ -30,7 +30,13 @@ const WalletScreen = () => {
         <WalletSheet />
       </View>
       <BlurView
-        style={styles.blur}
+        style={[
+          styles.blur,
+          {
+            height:
+              bottomTabs.height + (Platform.OS === 'ios' ? insets.bottom : 0),
+          },
+        ]}
         blurType={'light'}
         blurAmount={12}
         reducedTransparencyFallbackColor={colors.white_FFFFFF}
@@ -61,6 +67,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    height: bottomTabs.height,
   },
 });
