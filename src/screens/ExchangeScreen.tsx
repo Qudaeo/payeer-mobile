@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -25,12 +25,25 @@ const ExchangeScreen = () => {
   const [state, setState] = useState(mockExchange);
   const insets = useSafeAreaInsets();
 
+  const calcBuyAmount = useCallback(() => {
+    setState(prevState => {
+      const nextState = {...prevState};
+      nextState.buy.amount = (
+        +nextState.sell.amount *
+        (nextState.wallet[nextState.sell.currency]?.rate || 0)
+      ).toFixed(2);
+      return nextState;
+    });
+  }, []);
+
   const editSellAmount = (newAmount: string) => {
     setState(prevState => {
       const nextState = {...prevState};
       nextState.sell.amount = newAmount;
       return nextState;
     });
+
+    calcBuyAmount();
   };
 
   const handleBalanceAmountTouch = () => {
@@ -41,7 +54,13 @@ const ExchangeScreen = () => {
       ).toString();
       return nextState;
     });
+
+    calcBuyAmount();
   };
+
+  useEffect(() => {
+    calcBuyAmount();
+  }, [calcBuyAmount]);
 
   return (
     <KeyboardAvoidingView
@@ -103,14 +122,16 @@ const ExchangeScreen = () => {
           </View>
         </View>
       </ScrollView>
-      {+state.sell.amount > 0 && (
-        <Button
-          onPress={() => {
-            console.log('ОБМЕНЯТЬ');
-          }}
-          title={'ОБМЕНЯТЬ'}
-        />
-      )}
+      {+state.sell.amount > 0 &&
+        +state.sell.amount <=
+          (state.wallet[state.sell.currency]?.amount || 0) && (
+          <Button
+            onPress={() => {
+              console.log('ОБМЕНЯТЬ');
+            }}
+            title={'ОБМЕНЯТЬ'}
+          />
+        )}
     </KeyboardAvoidingView>
   );
 };
