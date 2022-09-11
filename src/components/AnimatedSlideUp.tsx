@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect, useMemo} from 'react';
+import React, {ReactElement, useEffect, useRef} from 'react';
 import {Animated, Dimensions, StyleProp, ViewStyle} from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 
@@ -10,10 +10,7 @@ interface IAnimatedSlideUp {
 const AnimatedSlideUp = ({children, style}: IAnimatedSlideUp) => {
   const windowHeight = Dimensions.get('window').height;
 
-  const animated = useMemo(
-    () => new Animated.Value(windowHeight),
-    [windowHeight],
-  );
+  const animated = useRef(new Animated.Value(windowHeight)).current;
   const duration = 500;
 
   const isFocused = useIsFocused();
