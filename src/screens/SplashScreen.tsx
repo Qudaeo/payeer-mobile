@@ -1,9 +1,13 @@
 import React, {useEffect, useRef} from 'react';
-import {Animated, Image, StyleSheet, View} from 'react-native';
 import {
-  useSafeAreaFrame,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+  Animated,
+  Dimensions,
+  Image,
+  Platform,
+  StyleSheet,
+  View,
+} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
 import Logo from '../components/Logo';
 import {colors} from '../base/colors';
@@ -15,14 +19,14 @@ interface ISplashScreen {
 const progressWidth = 120;
 
 const SplashScreen = ({setLoaded}: ISplashScreen) => {
-  const frame = useSafeAreaFrame();
+  const screenDimensions = Dimensions.get('screen');
   const insets = useSafeAreaInsets();
 
   const animatedProgressWidth = useRef(new Animated.Value(0)).current;
   const animatedOpacityTop = useRef(new Animated.Value(0)).current;
   const animatedOpacityBottom = useRef(new Animated.Value(0)).current;
 
-  const duration = 3000;
+  const duration = 2000;
 
   useEffect(() => {
     Animated.parallel([
@@ -53,8 +57,11 @@ const SplashScreen = ({setLoaded}: ISplashScreen) => {
 
   return (
     <>
-      <ImageBackground width={frame.width} height={frame.height} />
-      <View style={[styles.container, frame]}>
+      <ImageBackground
+        width={screenDimensions.width}
+        height={screenDimensions.height}
+      />
+      <View style={[styles.container, screenDimensions]}>
         <Animated.View
           style={[
             styles.initialOpacityTopPosition,
@@ -79,7 +86,7 @@ const SplashScreen = ({setLoaded}: ISplashScreen) => {
         <View
           style={[
             styles.progressPosition,
-            {bottom: 20 + insets.bottom},
+            {bottom: 20 + (Platform.OS === 'ios' ? insets.bottom : 60)},
             styles.progressContainer,
           ]}>
           <Animated.View
