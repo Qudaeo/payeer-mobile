@@ -11,6 +11,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ImageBackground from '../assets/svg/accountScreen/ImageBackground';
 import Logo from '../components/Logo';
 import {colors} from '../base/colors';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 interface ISplashScreen {
   setLoaded: (loaded: boolean) => void;
@@ -27,6 +28,15 @@ const SplashScreen = ({setLoaded}: ISplashScreen) => {
   const animatedOpacityBottom = useRef(new Animated.Value(0)).current;
 
   const duration = 2000;
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      SystemNavigationBar.setNavigationColor(colors.blue_3eacfb);
+      return () => {
+        SystemNavigationBar.setNavigationColor(colors.white_FFFFFF);
+      };
+    }
+  }, []);
 
   useEffect(() => {
     Animated.parallel([

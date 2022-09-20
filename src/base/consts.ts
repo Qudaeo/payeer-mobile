@@ -1,8 +1,10 @@
+import {colors} from './colors';
+
 export const bottomTabs = {
   height: 63,
-  backgroundColor: '#FFFFFF80',
-  tabBarActiveTintColor: '#03A9F4',
-  tabBarInactiveTintColor: '#000000',
+  backgroundColor: colors.white_FFFFFF80,
+  tabBarActiveTintColor: colors.blue_03A9F4,
+  tabBarInactiveTintColor: colors.black_000000,
 };
 
 export const header = {height: 50};

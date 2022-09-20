@@ -1,6 +1,7 @@
 export const colors = {
   white_FFFFFF: '#FFFFFF',
   white_FFFFFF40: '#FFFFFF40',
+  white_FFFFFF80: '#FFFFFF80',
   grey_909090: '#909090',
   grey_F1F1F1: '#F1F1F1',
   grey_F4F4F4: '#F4F4F4',
@@ -10,9 +11,11 @@ export const colors = {
   blue_A2EEFF: '#A2EEFF',
   blue_A1EEFF: '#A1EEFF',
   blue_03A9F4: '#03A9F4',
+  blue_3eacfb: '#3eacfb',
   green_4CAF50: '#4CAF50',
   green_70BF73: '#70BF73',
   green_98FF83: '#98FF83',
   black_262B34: '#262B34',
+  black_000000: '#000000',
   red_EF4712: '#EF4712',
 };
