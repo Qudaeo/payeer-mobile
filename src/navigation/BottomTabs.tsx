@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import WalletIcon from '../assets/svg/bottomTabs/wallet.svg';
 import FilterIcon from '../assets/svg/bottomTabs/filter.svg';
@@ -11,14 +11,21 @@ import AccountScreen from '../screens/AccountScreen';
 import {bottomTabs, defaultFont} from '../base/consts';
 import WalletScreen from '../screens/WalletScreen';
 import ExchangeScreen from '../screens/ExchangeScreen';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {colors} from '../base/colors';
 import GoBackButton from './GoBackButton';
+import SystemNavigationBar from 'react-native-system-navigation-bar';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      SystemNavigationBar.setNavigationColor(colors.white_FFFFFF);
+    }
+  }, []);
 
   return (
     <Tab.Navigator

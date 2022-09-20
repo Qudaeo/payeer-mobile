@@ -32,9 +32,6 @@ const SplashScreen = ({setLoaded}: ISplashScreen) => {
   useEffect(() => {
     if (Platform.OS === 'android') {
       SystemNavigationBar.setNavigationColor(colors.blue_3eacfb);
-      return () => {
-        SystemNavigationBar.setNavigationColor(colors.white_FFFFFF);
-      };
     }
   }, []);
 
